@@ -1,8 +1,6 @@
 package com.waldstonsantana.bibliotecaedu.resources;
 
-import com.waldstonsantana.bibliotecaedu.models.AutorModel;
 import com.waldstonsantana.bibliotecaedu.models.LocatarioModel;
-import com.waldstonsantana.bibliotecaedu.services.AutorService;
 import com.waldstonsantana.bibliotecaedu.services.LocatarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
