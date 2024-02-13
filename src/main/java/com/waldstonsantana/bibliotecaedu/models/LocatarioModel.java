@@ -1,0 +1,110 @@
+package com.waldstonsantana.bibliotecaedu.models;
+
+import jakarta.persistence.*;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Objects;
+
+@Entity
+@Table(name = "tb_locatarios")
+public class LocatarioModel implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String nome;
+    private String sexo;
+    private  String telefone;
+
+    @Column(unique = true)
+    private String email;
+    private LocalDate dataDeNascimento;
+
+    @Column(unique = true)
+    private String cpf;
+
+    public LocatarioModel() {
+
+    }
+
+    public LocatarioModel(Long id, String nome, String sexo, String telefone, String email, LocalDate dataDeNascimento, String cpf) {
+        this.id = id;
+        this.nome = nome;
+        this.sexo = sexo;
+        this.telefone = telefone;
+        this.email = email;
+        this.dataDeNascimento = dataDeNascimento;
+        this.cpf = cpf;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public LocalDate getDataDeNascimento() {
+        return dataDeNascimento;
+    }
+
+    public void setDataDeNascimento(LocalDate dataDeNascimento) {
+        this.dataDeNascimento = dataDeNascimento;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LocatarioModel that = (LocatarioModel) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+}
