@@ -1,10 +1,12 @@
 package com.waldstonsantana.bibliotecaedu.models;
 
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_livros")
@@ -18,6 +20,10 @@ public class LivroModel implements Serializable {
     private String name;
     private String isbn;
     private LocalDate dataDePublicacao;
+
+    @ManyToMany(mappedBy = "livros")
+    @Nonnull
+    private Set<AutorModel> autores = new HashSet<>();
 
     public LivroModel() {
 
@@ -60,6 +66,10 @@ public class LivroModel implements Serializable {
 
     public void setDataDePublicacao(LocalDate dataDePublicacao) {
         this.dataDePublicacao = dataDePublicacao;
+    }
+
+    public Set<AutorModel> getAutores() {
+        return autores;
     }
 
     @Override

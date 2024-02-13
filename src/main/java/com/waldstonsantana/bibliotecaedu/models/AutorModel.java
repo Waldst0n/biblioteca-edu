@@ -3,7 +3,7 @@ package com.waldstonsantana.bibliotecaedu.models;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "tb_autores")
@@ -72,6 +72,16 @@ public class AutorModel implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Set<LivroModel> getLivros() {
+        return livros;
+    }
+
+    @ManyToMany
+    @JoinTable(name = "autores_livros",
+                joinColumns = @JoinColumn(name = "autores_fk"),
+                inverseJoinColumns = @JoinColumn(name = "livros_fk"))
+    private Set<LivroModel> livros = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
