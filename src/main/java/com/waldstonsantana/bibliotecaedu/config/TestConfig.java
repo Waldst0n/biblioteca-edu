@@ -1,9 +1,11 @@
 package com.waldstonsantana.bibliotecaedu.config;
 
 
+import com.waldstonsantana.bibliotecaedu.models.AluguelModel;
 import com.waldstonsantana.bibliotecaedu.models.AutorModel;
 import com.waldstonsantana.bibliotecaedu.models.LivroModel;
 import com.waldstonsantana.bibliotecaedu.models.LocatarioModel;
+import com.waldstonsantana.bibliotecaedu.repositories.AluguelRepository;
 import com.waldstonsantana.bibliotecaedu.repositories.AutorRepository;
 import com.waldstonsantana.bibliotecaedu.repositories.LivroRepository;
 import com.waldstonsantana.bibliotecaedu.repositories.LocatarioRepository;
@@ -31,6 +33,10 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private LivroRepository livroRepository;
 
+    @Autowired
+    private AluguelRepository aluguelRepository;
+
+
     @Override
     public void run(String... args) throws Exception {
 
@@ -48,6 +54,18 @@ public class TestConfig implements CommandLineRunner {
         LivroModel domCasmurro = new LivroModel(null,"Dom Casmurro","9788506067420",LocalDate.parse("01/01/1999",formatter));
 
         livroRepository.save(domCasmurro);
+
+        AluguelModel al1 = new AluguelModel(null,LocalDate.parse("22/01/2021",formatter),LocalDate.now()  );
+
+        al1.dataDevolucao(al1);
+
+        aluguelRepository.save(al1);
+
+
+
+
+
+
 
 
     }

@@ -1,9 +1,7 @@
 package com.waldstonsantana.bibliotecaedu.resources;
 
 import com.waldstonsantana.bibliotecaedu.models.LivroModel;
-import com.waldstonsantana.bibliotecaedu.models.LocatarioModel;
 import com.waldstonsantana.bibliotecaedu.services.LivroService;
-import com.waldstonsantana.bibliotecaedu.services.LocatarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
