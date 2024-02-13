@@ -1,9 +1,6 @@
 package com.waldstonsantana.bibliotecaedu.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -13,11 +10,14 @@ import java.util.Objects;
 public class AutorModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String nome;
     private String sexo;
     private String anoDeNascimento;
 
-    @Id
+
     @Column(unique = true)
     private String cpf;
 
@@ -25,7 +25,8 @@ public class AutorModel implements Serializable {
 
     }
 
-    public AutorModel(String nome, String sexo, String anoDeNascimento, String cpf) {
+    public AutorModel(Long id, String nome, String sexo, String anoDeNascimento, String cpf) {
+        this.id = id;
         this.nome = nome;
         this.sexo = sexo;
         this.anoDeNascimento = anoDeNascimento;
@@ -64,16 +65,24 @@ public class AutorModel implements Serializable {
         this.cpf = cpf;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AutorModel that = (AutorModel) o;
-        return Objects.equals(cpf, that.cpf);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(cpf);
+        return Objects.hash(id);
     }
 }
