@@ -1,7 +1,7 @@
 package com.waldstonsantana.bibliotecaedu.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -21,9 +21,15 @@ public class LivroModel implements Serializable {
     private String isbn;
     private LocalDate dataDePublicacao;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "livros")
     @Nonnull
     private Set<AutorModel> autores = new HashSet<>();
+
+
+    @ManyToOne()
+    @JoinColumn(name = "aluguel_id")
+    private AluguelModel aluguelModel;
 
     public LivroModel() {
 
@@ -70,6 +76,16 @@ public class LivroModel implements Serializable {
 
     public Set<AutorModel> getAutores() {
         return autores;
+    }
+
+
+
+    public AluguelModel getAluguelModel() {
+        return aluguelModel;
+    }
+
+    public void setAluguelModel(AluguelModel aluguelModel) {
+        this.aluguelModel = aluguelModel;
     }
 
     @Override

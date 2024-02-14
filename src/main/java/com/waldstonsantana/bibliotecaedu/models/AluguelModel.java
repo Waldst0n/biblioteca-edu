@@ -1,10 +1,13 @@
 package com.waldstonsantana.bibliotecaedu.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_alugueis")
@@ -18,6 +21,15 @@ public class AluguelModel implements Serializable {
     private LocalDate dataRetirada;
     private LocalDate dataDevolucao;
 
+
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "aluguelModel")
+    private Set<LivroModel> livros = new HashSet<>();
+
+
+
+
     public AluguelModel() {
 
     }
@@ -25,6 +37,7 @@ public class AluguelModel implements Serializable {
         this.id = id;
         this.dataRetirada = dataRetirada;
         this.dataDevolucao = dataDevolucao;
+
 
     }
 
@@ -51,6 +64,11 @@ public class AluguelModel implements Serializable {
     public void setDataDevolucao(LocalDate dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
+
+    public Set<LivroModel> getLivros() {
+        return livros;
+    }
+
 
     @Override
     public boolean equals(Object o) {

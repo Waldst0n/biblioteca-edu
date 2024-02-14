@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -25,11 +26,15 @@ public class LocatarioModel implements Serializable {
     @Column(unique = true)
     private String cpf;
 
+    private AluguelModel aluguelModel;
+
+
+
     public LocatarioModel() {
 
     }
 
-    public LocatarioModel(Long id, String nome, String sexo, String telefone, String email, LocalDate dataDeNascimento, String cpf) {
+    public LocatarioModel(Long id, String nome, String sexo, String telefone, String email, LocalDate dataDeNascimento, String cpf, AluguelModel aluguelModel) {
         this.id = id;
         this.nome = nome;
         this.sexo = sexo;
@@ -37,15 +42,14 @@ public class LocatarioModel implements Serializable {
         this.email = email;
         this.dataDeNascimento = dataDeNascimento;
         this.cpf = cpf;
+        this.aluguelModel = aluguelModel;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+
 
     public String getNome() {
         return nome;
@@ -93,6 +97,14 @@ public class LocatarioModel implements Serializable {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public AluguelModel getAluguelModel() {
+        return aluguelModel;
+    }
+
+    public void setAluguelModel(AluguelModel aluguelModel) {
+        this.aluguelModel = aluguelModel;
     }
 
     @Override
