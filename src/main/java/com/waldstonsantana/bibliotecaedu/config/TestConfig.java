@@ -52,17 +52,20 @@ public class TestConfig implements CommandLineRunner {
 
         autorRepository.saveAll(Arrays.asList(joao,maria));
 
-        LocatarioModel marcos = new LocatarioModel(null, "Marcos Bispo", "79988234567","Masculino","marcos@gmail.com",LocalDate.parse("12/12/1912",formatter),"05423456789");
+        LocatarioModel marcos = new LocatarioModel(null, "Marcos Bispo", "79988234567","Masculino","marcos@gmail.com",LocalDate.parse("12/12/1912",formatter),"05423456789", null);
 
         locatarioRepository.save(marcos);
 
         LivroModel domCasmurro = new LivroModel(null,"Dom Casmurro","9788506067420",LocalDate.parse("01/01/1999",formatter));
+        ;
 
 
 
         livroRepository.save(domCasmurro);
 
-        AluguelModel al1 = new AluguelModel(null,LocalDate.parse("22/01/2021",formatter),LocalDate.now()  );
+        AluguelModel al1 = new AluguelModel(null,LocalDate.parse("22/01/2021",formatter),LocalDate.now());
+
+        al1.getLivros().add(domCasmurro);
 
         al1.dataDevolucao(al1);
 
@@ -70,7 +73,12 @@ public class TestConfig implements CommandLineRunner {
 
         joao.getLivros().add(domCasmurro);
         maria.getLivros().add(domCasmurro);
+        domCasmurro.setAluguelModel(al1);
 
+        marcos.setAluguelModel(al1);
+
+
+        livroRepository.save(domCasmurro);
         autorRepository.saveAll(Arrays.asList(joao,maria));
 
 
