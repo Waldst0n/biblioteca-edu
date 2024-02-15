@@ -46,22 +46,21 @@ public class TestConfig implements CommandLineRunner {
 
         AutorModel joao = new AutorModel(null,"João Gomes", "Masculino", "2000","05415624567");
         AutorModel maria = new AutorModel(null,"Maria Gomes", "Feminino", "1993","12365476898");
+        AutorModel augusto = new AutorModel(null, "Augusto Cury", null,"1963","06724357890");
 
 
-
-
-        autorRepository.saveAll(Arrays.asList(joao,maria));
+        autorRepository.saveAll(Arrays.asList(joao,maria,augusto));
 
         LocatarioModel marcos = new LocatarioModel(null, "Marcos Bispo", "79988234567","Masculino","marcos@gmail.com",LocalDate.parse("12/12/1912",formatter),"05423456789");
+        LocatarioModel abreu = new LocatarioModel(null, "Abreu Nunes", null,"1591873456","abreu@gmail.com",LocalDate.parse("10/05/1989",formatter),"03876513456");
 
-        locatarioRepository.save(marcos);
+        locatarioRepository.saveAll(Arrays.asList(marcos,abreu));
 
         LivroModel domCasmurro = new LivroModel(null,"Dom Casmurro","9788506067420",LocalDate.parse("01/01/1999",formatter));
-        ;
+        LivroModel aGataBorralheira = new LivroModel(null,"A gata borralheira","2546782346578",LocalDate.parse("10/07/1945",formatter));
 
 
-
-        livroRepository.save(domCasmurro);
+        livroRepository.saveAll(Arrays.asList(domCasmurro,aGataBorralheira));
 
         AluguelModel al1 = new AluguelModel(null,LocalDate.parse("22/01/2021",formatter),LocalDate.now());
 
@@ -73,13 +72,15 @@ public class TestConfig implements CommandLineRunner {
 
         joao.getLivros().add(domCasmurro);
         maria.getLivros().add(domCasmurro);
+        augusto.getLivros().add(aGataBorralheira);
+        aGataBorralheira.setAluguelModel(al1);
         domCasmurro.setAluguelModel(al1);
 
 
 
 
-        livroRepository.save(domCasmurro);
-        autorRepository.saveAll(Arrays.asList(joao,maria));
+        livroRepository.saveAll(Arrays.asList(domCasmurro,aGataBorralheira));
+        autorRepository.saveAll(Arrays.asList(joao,maria,augusto));
 
 
 
