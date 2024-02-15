@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -25,6 +26,11 @@ public class AutorService {
         if (autor == null){
             throw new RuntimeException("Autor não encontrado");
         } else return autor;
+    }
+
+
+    public Optional<AutorModel> findByName(String name) {
+        return  autorRepository.findByNomeContainingIgnoreCase(name);
     }
 
 }
