@@ -17,15 +17,21 @@ public class LocatarioModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String nome;
     private String sexo;
+
+    @Column(nullable = false)
     private  String telefone;
 
     @Column(unique = true)
     private String email;
+
+    @Column(nullable = false)
     private LocalDate dataDeNascimento;
 
-    @Column(unique = true)
+    @Column(unique = true,nullable = false)
     private String cpf;
 
     @JsonIgnore

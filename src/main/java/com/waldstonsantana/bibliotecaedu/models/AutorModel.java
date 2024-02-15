@@ -14,12 +14,16 @@ public class AutorModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String nome;
     private String sexo;
+
+    @Column(nullable = false)
     private String anoDeNascimento;
 
 
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String cpf;
 
     public AutorModel() {

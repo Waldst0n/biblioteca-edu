@@ -17,8 +17,13 @@ public class LivroModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
     private String isbn;
+
+    @Column(nullable = false)
     private LocalDate dataDePublicacao;
 
     @ManyToMany(mappedBy = "livros")
