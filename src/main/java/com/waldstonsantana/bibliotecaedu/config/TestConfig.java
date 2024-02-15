@@ -58,9 +58,22 @@ public class TestConfig implements CommandLineRunner {
 
         LivroModel domCasmurro = new LivroModel(null,"Dom Casmurro","9788506067420",LocalDate.parse("01/01/1999",formatter));
         LivroModel aGataBorralheira = new LivroModel(null,"A gata borralheira","2546782346578",LocalDate.parse("10/07/1945",formatter));
+        LivroModel harryPotter1 = new LivroModel(null,"Harry Potter e a pedra filosofal","2345864623465",LocalDate.parse("10/04/1980",formatter));
+        LivroModel narutoShippudden = new LivroModel(null,"Naruto Shippudden","5476890234576",LocalDate.parse("12/10/1993",formatter));
+
+        joao.getLivros().add(domCasmurro);
+        maria.getLivros().add(domCasmurro);
+        domCasmurro.getAutores().addAll(Arrays.asList(joao,maria));
+
+        augusto.getLivros().addAll(Arrays.asList(aGataBorralheira,narutoShippudden,harryPotter1));
+        aGataBorralheira.getAutores().add(augusto);
+        narutoShippudden.getAutores().add(augusto);
+        harryPotter1.getAutores().add(augusto);
 
 
-        livroRepository.saveAll(Arrays.asList(domCasmurro,aGataBorralheira));
+
+        livroRepository.saveAll(Arrays.asList(domCasmurro,aGataBorralheira,narutoShippudden,harryPotter1));
+        augusto.getLivros().addAll(Arrays.asList(aGataBorralheira,narutoShippudden,harryPotter1));
 
         AluguelModel al1 = new AluguelModel(null,LocalDate.parse("22/01/2021",formatter),LocalDate.now());
 
@@ -70,16 +83,16 @@ public class TestConfig implements CommandLineRunner {
 
         aluguelRepository.save(al1);
 
-        joao.getLivros().add(domCasmurro);
-        maria.getLivros().add(domCasmurro);
-        augusto.getLivros().add(aGataBorralheira);
+
         aGataBorralheira.setAluguelModel(al1);
         domCasmurro.setAluguelModel(al1);
 
-
-
-
         livroRepository.saveAll(Arrays.asList(domCasmurro,aGataBorralheira));
+
+
+
+
+
         autorRepository.saveAll(Arrays.asList(joao,maria,augusto));
 
 

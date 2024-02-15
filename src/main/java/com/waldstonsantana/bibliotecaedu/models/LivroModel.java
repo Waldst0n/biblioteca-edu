@@ -3,6 +3,8 @@ package com.waldstonsantana.bibliotecaedu.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -27,7 +29,8 @@ public class LivroModel implements Serializable {
     private LocalDate dataDePublicacao;
 
     @ManyToMany(mappedBy = "livros")
-    @Nonnull
+    @NotEmpty
+    @Column(nullable = false)
     private Set<AutorModel> autores = new HashSet<>();
 
     @JsonIgnore
