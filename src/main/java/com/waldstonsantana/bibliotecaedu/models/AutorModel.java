@@ -1,5 +1,6 @@
 package com.waldstonsantana.bibliotecaedu.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -77,6 +78,7 @@ public class AutorModel implements Serializable {
         return livros;
     }
 
+    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "autores_livros",
                 joinColumns = @JoinColumn(name = "autores_fk"),

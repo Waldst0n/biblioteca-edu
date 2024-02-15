@@ -21,12 +21,11 @@ public class LivroModel implements Serializable {
     private String isbn;
     private LocalDate dataDePublicacao;
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "livros")
     @Nonnull
     private Set<AutorModel> autores = new HashSet<>();
 
-
+    @JsonIgnore
     @ManyToOne()
     @JoinColumn(name = "aluguel_id")
     private AluguelModel aluguelModel;

@@ -1,6 +1,5 @@
 package com.waldstonsantana.bibliotecaedu.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -23,9 +22,13 @@ public class AluguelModel implements Serializable {
 
 
 
-    @JsonIgnore
     @OneToMany(mappedBy = "aluguelModel")
     private Set<LivroModel> livros = new HashSet<>();
+
+
+    @ManyToOne
+    @JoinColumn(name = "locatario_id")
+    private LocatarioModel locatario;
 
 
 
@@ -45,9 +48,7 @@ public class AluguelModel implements Serializable {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+
 
     public LocalDate getDataRetirada() {
         return dataRetirada;
@@ -69,6 +70,13 @@ public class AluguelModel implements Serializable {
         return livros;
     }
 
+    public LocatarioModel getLocatario() {
+        return locatario;
+    }
+
+    public void setLocatario(LocatarioModel locatario) {
+        this.locatario = locatario;
+    }
 
     @Override
     public boolean equals(Object o) {

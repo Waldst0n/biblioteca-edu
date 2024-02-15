@@ -1,11 +1,13 @@
 package com.waldstonsantana.bibliotecaedu.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_locatarios")
@@ -26,7 +28,9 @@ public class LocatarioModel implements Serializable {
     @Column(unique = true)
     private String cpf;
 
-    private AluguelModel aluguelModel;
+    @JsonIgnore
+    @OneToMany(mappedBy = "locatario")
+    private Set<AluguelModel> alugueis = new HashSet<>();
 
 
 
@@ -34,7 +38,7 @@ public class LocatarioModel implements Serializable {
 
     }
 
-    public LocatarioModel(Long id, String nome, String sexo, String telefone, String email, LocalDate dataDeNascimento, String cpf, AluguelModel aluguelModel) {
+    public LocatarioModel(Long id, String nome, String sexo, String telefone, String email, LocalDate dataDeNascimento, String cpf) {
         this.id = id;
         this.nome = nome;
         this.sexo = sexo;
@@ -42,7 +46,7 @@ public class LocatarioModel implements Serializable {
         this.email = email;
         this.dataDeNascimento = dataDeNascimento;
         this.cpf = cpf;
-        this.aluguelModel = aluguelModel;
+
     }
 
     public Long getId() {
@@ -99,12 +103,8 @@ public class LocatarioModel implements Serializable {
         this.cpf = cpf;
     }
 
-    public AluguelModel getAluguelModel() {
-        return aluguelModel;
-    }
-
-    public void setAluguelModel(AluguelModel aluguelModel) {
-        this.aluguelModel = aluguelModel;
+    public Set<AluguelModel> getAlugueis() {
+        return alugueis;
     }
 
     @Override
