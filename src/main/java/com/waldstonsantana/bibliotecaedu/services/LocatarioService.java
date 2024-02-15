@@ -20,4 +20,11 @@ public class LocatarioService {
 
     }
 
+    public LocatarioModel findById(Long id) {
+        LocatarioModel locatario = locatarioRepository.findById(id).get();
+        if (locatario == null){
+            throw new RuntimeException("Livro não encontrado");
+        } else return locatario;
+    }
+
 }

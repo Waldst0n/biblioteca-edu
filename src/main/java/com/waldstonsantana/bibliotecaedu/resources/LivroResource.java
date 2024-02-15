@@ -1,6 +1,5 @@
 package com.waldstonsantana.bibliotecaedu.resources;
 
-import com.waldstonsantana.bibliotecaedu.models.AutorModel;
 import com.waldstonsantana.bibliotecaedu.models.LivroModel;
 import com.waldstonsantana.bibliotecaedu.services.LivroService;
 import org.springframework.beans.factory.annotation.Autowired;
