@@ -20,4 +20,11 @@ public class AutorService {
 
     }
 
+    public  AutorModel findById(Long id) {
+        AutorModel autor = autorRepository.findById(id).get();
+        if (autor == null){
+            throw new RuntimeException("Autor não encontrado");
+        } else return autor;
+    }
+
 }
