@@ -56,6 +56,12 @@ public class AutorResource {
         return ResponseEntity.noContent().build();
     }
 
+    @PutMapping(value = "{id}")
+    public ResponseEntity<AutorModel> update(@PathVariable Long id, @RequestBody AutorModel obj) {
+       obj = autorService.update(id,obj);
+       return ResponseEntity.ok().body(obj);
+    }
+
 
 
 

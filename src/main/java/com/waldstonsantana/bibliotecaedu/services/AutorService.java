@@ -42,4 +42,18 @@ public class AutorService {
         autorRepository.deleteById(id);
     }
 
+    public AutorModel update(Long id, AutorModel obj) {
+       AutorModel newObj = autorRepository.getReferenceById(id);
+       updateData(newObj,obj);
+       return autorRepository.save(newObj);
+    }
+
+    private void updateData(AutorModel newObj, AutorModel obj) {
+        newObj.setNome(obj.getNome());
+        newObj.setSexo(obj.getSexo());
+        newObj.setCpf(obj.getCpf());
+        newObj.setAnoDeNascimento(obj.getAnoDeNascimento());
+
+    }
+
 }
