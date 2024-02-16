@@ -47,6 +47,12 @@ public class AutorResource {
     public ResponseEntity<AutorModel> insert(@RequestBody AutorModel obj) {
         obj =autorService.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/id").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).body(obj);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    public  ResponseEntity<Void> delete(@PathVariable long id) {
+        autorService.delete(id);
         return ResponseEntity.noContent().build();
     }
 

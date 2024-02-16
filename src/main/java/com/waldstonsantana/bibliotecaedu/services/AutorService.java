@@ -37,4 +37,9 @@ public class AutorService {
         return autorRepository.save(obj);
     }
 
+    public void delete(Long id) {
+        findById(id);
+        autorRepository.deleteById(id);
+    }
+
 }
