@@ -33,4 +33,8 @@ public class AutorService {
         return  autorRepository.findByNomeContainingIgnoreCase(name);
     }
 
+    public AutorModel insert(AutorModel obj) {
+        return autorRepository.save(obj);
+    }
+
 }

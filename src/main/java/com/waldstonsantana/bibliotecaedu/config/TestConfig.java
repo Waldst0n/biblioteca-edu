@@ -51,7 +51,7 @@ public class TestConfig implements CommandLineRunner {
 
         autorRepository.saveAll(Arrays.asList(joao,maria,augusto));
 
-        LocatarioModel marcos = new LocatarioModel(null, "Marcos Bispo", "79988234567","Masculino","marcos@gmail.com",LocalDate.parse("12/12/1912",formatter),"05423456789");
+        LocatarioModel marcos = new LocatarioModel(null, "Marcos Bispo", "Masculino","79988234567","marcos@gmail.com",LocalDate.parse("12/12/1912",formatter),"05423456789");
         LocatarioModel abreu = new LocatarioModel(null, "Abreu Nunes", null,"1591873456","abreu@gmail.com",LocalDate.parse("10/05/1989",formatter),"03876513456");
 
         locatarioRepository.saveAll(Arrays.asList(marcos,abreu));
@@ -69,7 +69,6 @@ public class TestConfig implements CommandLineRunner {
         aGataBorralheira.getAutores().add(augusto);
         narutoShippudden.getAutores().add(augusto);
         harryPotter1.getAutores().add(augusto);
-
 
 
         livroRepository.saveAll(Arrays.asList(domCasmurro,aGataBorralheira,narutoShippudden,harryPotter1));
